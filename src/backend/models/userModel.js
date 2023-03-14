@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const shortId = require("shortid");
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -14,6 +15,11 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    checkEmailPoint: {
+        type: String,
+        required: true,
+        default:shortId.generate
     }
 });
 
