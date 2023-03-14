@@ -53,6 +53,14 @@ const sendCheckMail = (user) => {
     }
 }
 
+app.get("/email/:id", (req,res) => {
+    const id = req.params.id;
+    const checkuser = User.findOne({checkEmailPoint: id});
+    if(chechuser == null) return res.status(404).json({message:"ユーザーが見つかりません"});
+    checkuser.isCheckEmail = true;
+    return res.status(200).json("OK");
+});
+
 // mongodbと接続
 mongoose
     .connect(MONGOURL)
