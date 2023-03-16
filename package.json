@@ -9,9 +9,13 @@
     "dev-backend": "nodemon ./src/backend/server.js"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.5.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "framer-motion": "^10.3.2",
     "mongoose": "^7.0.1",
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.21",

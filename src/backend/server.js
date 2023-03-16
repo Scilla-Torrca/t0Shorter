@@ -144,6 +144,9 @@ app.post("/api/login", async (req,res) => {
 
     const valuedPassword = await bcrypt.compare(loginPassword,userdata.password);
     if(!valuedPassword) return res.status(200).json({message:"パスワードが違います"});
+
+    if(userdata.isCheckEmail == false) return res.status(200).json({ message:"メール認証を行ってください" });
     
     return res.status(200).json(userdata.id);
 });
+
