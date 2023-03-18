@@ -11,6 +11,8 @@ const app = express();
 require("dotenv").config();
 const MONGOURL = process.env.MONGOURL;
 const domain = process.env.Domain;
+const solt = process.env.solt;
+const stretchings = process.env.stretchings;
 
 const smtp = nodemailer.createTransport({
     host: process.env.SMTPHost,
@@ -121,7 +123,7 @@ app.get("/:id", async (req,res) => {
 app.post("/api/register", (req,res) => {
         const Email = req.body.email;
         const password = req.body.password;
-        bcrypt.hash(password,10).then((hashPassword) => {
+        bcrypt.hash(solt+password,stretchings).then((hashPassword) => {
             const User = new user({
                 email: Email,
                 password: hashPassword
@@ -149,4 +151,5 @@ app.post("/api/login", async (req,res) => {
     
     return res.status(200).json(userdata.id);
 });
+ 
 
